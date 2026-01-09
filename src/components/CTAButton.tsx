@@ -34,6 +34,3 @@ export const CTAButton = ({ variant: _variant = "primary", children, className }
     </motion.a>
   );
 };
-    </motion.a>
-  );
-};

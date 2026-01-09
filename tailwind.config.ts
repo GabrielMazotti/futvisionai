@@ -60,11 +60,6 @@ export default {
           hover: "hsl(var(--telegram-hover))",
           foreground: "hsl(var(--telegram-foreground))",
         },
-        telegram: {
-          DEFAULT: "hsl(var(--telegram))",
-          hover: "hsl(var(--telegram-hover))",
-          foreground: "hsl(var(--telegram-foreground))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
