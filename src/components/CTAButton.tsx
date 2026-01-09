@@ -27,8 +27,8 @@ export const CTAButton = ({ variant = "primary", children, className }: CTAButto
         className={cn(
           "group relative font-heading text-base md:text-lg font-semibold px-8 py-6 md:px-10 md:py-7 rounded-xl transition-all duration-300",
           isPrimary
-            ? "bg-primary text-primary-foreground glow-button pulse-glow"
-            : "bg-secondary text-secondary-foreground border border-primary/30 hover:border-primary/60 hover:bg-secondary/80",
+            ? "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_20px_rgba(0,136,204,0.4)] hover:shadow-[0_0_30px_rgba(0,136,204,0.6)]"
+            : "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_15px_rgba(0,136,204,0.3)] hover:shadow-[0_0_25px_rgba(0,136,204,0.5)]",
           className
         )}
       >
