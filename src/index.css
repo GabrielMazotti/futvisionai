@@ -44,6 +44,11 @@
     --gradient-end: 160 100% 50%;
     --glass-bg: 220 40% 8%;
     --glass-border: 220 30% 20%;
+
+    /* Telegram CTA tokens */
+    --telegram: 200 100% 40%;
+    --telegram-hover: 201 100% 35%;
+    --telegram-foreground: 0 0% 100%;
   }
 
   .dark {
@@ -127,7 +132,21 @@
     transform: translateY(-2px);
   }
 
-  /* Pulse animation for CTA */
+  /* Telegram glow (used on CTA buttons) */
+  .telegram-glow-button {
+    box-shadow:
+      0 0 20px hsl(var(--telegram) / 0.40),
+      0 0 40px hsl(var(--telegram) / 0.22),
+      inset 0 1px 0 hsl(var(--telegram-foreground) / 0.18);
+  }
+
+  .telegram-glow-button:hover {
+    box-shadow:
+      0 0 30px hsl(var(--telegram) / 0.55),
+      0 0 60px hsl(var(--telegram) / 0.30),
+      inset 0 1px 0 hsl(var(--telegram-foreground) / 0.22);
+  }
+
   .pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
   }
