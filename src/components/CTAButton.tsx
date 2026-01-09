@@ -25,13 +25,13 @@ export const CTAButton = ({ variant = "primary", children, className }: CTAButto
       <Button
         size="lg"
         className={cn(
-          "group relative font-heading text-base md:text-lg font-semibold px-6 py-5 md:px-8 md:py-6 rounded-xl transition-all duration-300",
+          "group relative font-heading text-sm md:text-base font-semibold px-4 py-4 md:px-6 md:py-5 rounded-xl transition-all duration-300 w-full max-w-xs md:max-w-md",
           "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_20px_rgba(0,136,204,0.4)] hover:shadow-[0_0_30px_rgba(0,136,204,0.6)]",
           className
         )}
       >
-        <Send className="mr-3 h-5 w-5" />
-        {children}
+        <Send className="mr-2 h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+        <span className="truncate">{children}</span>
       </Button>
     </motion.a>
   );
