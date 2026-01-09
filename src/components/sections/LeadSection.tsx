@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Radar, Shield, Zap } from "lucide-react";
 import { CTAButton } from "@/components/CTAButton";
-import { RadarAnimation } from "@/components/RadarAnimation";
 
 export const LeadSection = () => {
   const ref = useRef(null);
@@ -12,16 +11,6 @@ export const LeadSection = () => {
   return (
     <section ref={ref} className="section-spacing px-4">
       <div className="container max-w-4xl mx-auto">
-        {/* Radar Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.8 }}
-          className="mb-8 md:mb-12"
-        >
-          <RadarAnimation />
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

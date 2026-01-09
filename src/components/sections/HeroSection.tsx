@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CTAButton } from "@/components/CTAButton";
+import { RadarAnimation } from "@/components/RadarAnimation";
 
 export const HeroSection = () => {
   return (
@@ -59,6 +60,16 @@ export const HeroSection = () => {
           <p className="text-muted-foreground text-sm md:text-base">
             Únete a más de <span className="text-primary font-medium">1.500 parceros</span> que ya están cobrando.
           </p>
+        </motion.div>
+
+        {/* Radar Animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-12 md:mt-16"
+        >
+          <RadarAnimation />
         </motion.div>
       </div>
     </section>
