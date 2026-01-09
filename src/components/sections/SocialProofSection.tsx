@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { PROOF_IMAGES } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,14 @@ export const SocialProofSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Auto-scroll carousel every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % PROOF_IMAGES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % PROOF_IMAGES.length);

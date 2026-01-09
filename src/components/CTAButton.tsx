@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TELEGRAM_INVITE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -25,16 +25,13 @@ export const CTAButton = ({ variant = "primary", children, className }: CTAButto
       <Button
         size="lg"
         className={cn(
-          "group relative font-heading text-base md:text-lg font-semibold px-8 py-6 md:px-10 md:py-7 rounded-xl transition-all duration-300",
-          isPrimary
-            ? "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_20px_rgba(0,136,204,0.4)] hover:shadow-[0_0_30px_rgba(0,136,204,0.6)]"
-            : "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_15px_rgba(0,136,204,0.3)] hover:shadow-[0_0_25px_rgba(0,136,204,0.5)]",
+          "group relative font-heading text-base md:text-lg font-semibold px-6 py-5 md:px-8 md:py-6 rounded-xl transition-all duration-300",
+          "bg-[#0088cc] hover:bg-[#0077b5] text-white shadow-[0_0_20px_rgba(0,136,204,0.4)] hover:shadow-[0_0_30px_rgba(0,136,204,0.6)]",
           className
         )}
       >
-        <Send className="mr-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+        <Send className="mr-3 h-5 w-5" />
         {children}
-        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
       </Button>
     </motion.a>
   );
