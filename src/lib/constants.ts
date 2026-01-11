@@ -1,5 +1,5 @@
 // Telegram invite URL - easy to change in one place
-export const TELEGRAM_INVITE_URL = "https://t.me/+G0BYzK6EHQdhZDBh";
+export const TELEGRAM_INVITE_URL = "https://t.me/+AvxxxWBvfGVmZjMx";
 
 // Social proof images
 export const PROOF_IMAGES = [
