@@ -11,11 +11,23 @@ interface CTAButtonProps {
 }
 
 export const CTAButton = ({ variant: _variant = "primary", children, className }: CTAButtonProps) => {
+  const handleClick = () => {
+    // Track4You event
+    if (typeof window !== 'undefined' && (window as any).track4you) {
+      (window as any).track4you('enter_channel');
+    }
+    // GTM dataLayer event
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({ event: 'enter_channel' });
+    }
+  };
+
   return (
     <motion.a
       href={TELEGRAM_INVITE_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       className="block w-full max-w-full sm:max-w-md mx-auto"
