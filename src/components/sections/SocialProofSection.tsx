@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { PROOF_IMAGES } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
@@ -9,32 +9,45 @@ export const SocialProofSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
-  // Auto-scroll carousel every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % PROOF_IMAGES.length);
-    }, 4000);
-    return () => clearInterval(interval);
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % PROOF_IMAGES.length);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % PROOF_IMAGES.length);
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + PROOF_IMAGES.length) % PROOF_IMAGES.length);
+  }, []);
+
+  // Auto-scroll every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+  // Swipe support
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + PROOF_IMAGES.length) % PROOF_IMAGES.length);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      diff > 0 ? nextSlide() : prevSlide();
+    }
+    setTouchStart(null);
   };
 
   return (
     <section ref={ref} className="section-spacing px-4">
-      <div className="container max-w-6xl mx-auto">
+      <div className="container max-w-2xl mx-auto">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-10 md:mb-14"
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <Users className="w-6 h-6 text-primary" />
@@ -47,71 +60,61 @@ export const SocialProofSection = () => {
           </h2>
         </motion.div>
 
-        {/* Mobile carousel */}
-        <div className="md:hidden relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-2 rounded-2xl overflow-hidden"
+        {/* Carousel */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="relative"
+        >
+          <div
+            className="glass-card p-2 sm:p-3 rounded-2xl overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
-            <img
-              src={PROOF_IMAGES[currentIndex]}
-              alt={`Testimonio ${currentIndex + 1}`}
-              className="w-full h-auto rounded-xl"
-              loading="lazy"
-            />
-          </motion.div>
-          
-          {/* Navigation */}
-          <div className="flex justify-center items-center gap-4 mt-6">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={prevSlide}
-              className="border-primary/30 hover:bg-primary/10"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </Button>
-            <div className="flex gap-2">
-              {PROOF_IMAGES.map((_, idx) => (
-                <button
+            <div className="relative aspect-square sm:aspect-[3/4] md:aspect-[3/4] overflow-hidden rounded-xl">
+              {PROOF_IMAGES.map((image, idx) => (
+                <img
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentIndex ? "bg-primary w-6" : "bg-muted"
-                  }`}
+                  src={image}
+                  alt={`Testimonio ${idx + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                  style={{ opacity: idx === currentIndex ? 1 : 0 }}
+                  loading={idx === 0 ? "eager" : "lazy"}
                 />
               ))}
             </div>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={nextSlide}
-              className="border-primary/30 hover:bg-primary/10"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </Button>
           </div>
-        </div>
 
-        {/* Desktop grid */}
-        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {PROOF_IMAGES.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="glass-card p-2 rounded-2xl image-hover cursor-pointer"
-            >
-              <img
-                src={image}
-                alt={`Testimonio ${index + 1}`}
-                className="w-full h-auto rounded-xl"
-                loading="lazy"
-              />
-            </motion.div>
+          {/* Arrow buttons */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={prevSlide}
+            className="absolute left-2 sm:-left-5 top-1/2 -translate-y-1/2 border-primary/30 hover:bg-primary/10 bg-background/80 backdrop-blur-sm z-10 h-9 w-9"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={nextSlide}
+            className="absolute right-2 sm:-right-5 top-1/2 -translate-y-1/2 border-primary/30 hover:bg-primary/10 bg-background/80 backdrop-blur-sm z-10 h-9 w-9"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </Button>
+        </motion.div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2 mt-6">
+          {PROOF_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === currentIndex ? "bg-primary w-6" : "bg-muted w-2"
+              }`}
+            />
           ))}
         </div>
       </div>
