@@ -72,13 +72,13 @@ export const SocialProofSection = () => {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="relative aspect-square sm:aspect-[3/4] md:aspect-[3/4] overflow-hidden rounded-xl">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-xl bg-black/40">
               {PROOF_IMAGES.map((image, idx) => (
                 <img
                   key={idx}
                   src={image}
                   alt={`Testimonio ${idx + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                  className="absolute inset-0 w-full h-full object-contain transition-opacity duration-500"
                   style={{ opacity: idx === currentIndex ? 1 : 0 }}
                   loading={idx === 0 ? "eager" : "lazy"}
                 />
