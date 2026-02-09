@@ -31,9 +31,9 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 md:mb-8"
         >
-          ¡DEJA DE DAR PAPAYA A LAS CASAS!{" "}
-          <span className="gradient-text">USA EL GPS DE FUTVISION</span>{" "}
-          PARA DETECTAR ERRORES EN TIEMPO REAL.
+          ¡DEJA DE RECOGER MIGAJAS!{" "}
+          <span className="gradient-text">MULTIPLICA TU CAPITAL</span>{" "}
+          HASTA ODD 69.
         </motion.h1>
 
         {/* Sub-headline */}
@@ -43,8 +43,7 @@ export const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed"
         >
-          Genera de <span className="text-primary font-semibold">$50.000 a $300.000 COP</span> diarios 
-          siguiendo nuestro mapa del lucro. Recibe el acceso gratuito ahora mismo vía Telegram.
+          Nuestra IA detecta errores matemáticos con cuotas de <span className="text-primary font-semibold">5.0, 8.0 y hasta 69.0</span> en tiempo real.
         </motion.p>
 
         {/* CTA */}
@@ -55,7 +54,7 @@ export const HeroSection = () => {
           className="flex flex-col items-center gap-4"
         >
           <CTAButton variant="primary">
-            ACCEDER AL GPS EN TELEGRAM
+            QUIERO ALERTAS DE ODD69 📲
           </CTAButton>
           <p className="text-muted-foreground text-sm md:text-base">
             Únete a más de <span className="text-primary font-medium">1.500 parceros</span> que ya están cobrando.
