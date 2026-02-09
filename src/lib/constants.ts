@@ -3,7 +3,9 @@ export const TELEGRAM_INVITE_URL = "https://t.me/+AvxxxWBvfGVmZjMx";
 
 // Social proof images
 export const PROOF_IMAGES = [
-  "https://lp.futvision.ai/images/1.png",
-  "https://lp.futvision.ai/images/2.png",
-  "https://lp.futvision.ai/images/3.png",
+  "/images/proof-1.jpeg",
+  "/images/proof-2.jpeg",
+  "/images/proof-3.jpeg",
+  "/images/proof-4.jpeg",
+  "/images/proof-5.jpeg",
 ];
