@@ -1,8 +1,11 @@
-import { motion } from "framer-motion";
 import { Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { CTAButton } from "@/components/CTAButton";
-import { RadarAnimation } from "@/components/RadarAnimation";
+import { lazy, Suspense } from "react";
+
+const RadarAnimation = lazy(() =>
+  import("@/components/RadarAnimation").then((m) => ({ default: m.RadarAnimation }))
+);
 
 export const HeroSection = () => {
   return (
@@ -13,63 +16,47 @@ export const HeroSection = () => {
 
       <div className="container max-w-5xl mx-auto text-center z-10">
         {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="animate-fade-up">
           <Badge className="mb-6 md:mb-8 bg-primary/10 text-primary border-primary/30 px-4 py-2 text-sm md:text-base font-semibold">
             <Zap className="w-4 h-4 mr-2 animate-glow-pulse" />
             ACCESO GRATUITO DISPONIBLE
           </Badge>
-        </motion.div>
+        </div>
 
         {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 md:mb-8"
+        <h1
+          className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 md:mb-8 animate-fade-up"
+          style={{ animationDelay: "0.1s" }}
         >
           ¡DEJA DE RECOGER MIGAJAS!{" "}
           <span className="gradient-text">MULTIPLICA TU CAPITAL</span>{" "}
           HASTA ODD 69.
-        </motion.h1>
+        </h1>
 
         {/* Sub-headline */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed"
+        <p
+          className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed animate-fade-up"
+          style={{ animationDelay: "0.2s" }}
         >
           Nuestra IA detecta errores matemáticos con cuotas de <span className="text-primary font-semibold">5.0, 8.0 y hasta 69.0</span> en tiempo real.
-        </motion.p>
+        </p>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col items-center gap-4"
-        >
+        <div className="flex flex-col items-center gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
           <CTAButton variant="primary">
             QUIERO ALERTAS DE ODD69 📲
           </CTAButton>
           <p className="text-muted-foreground text-sm md:text-base">
             Únete a más de <span className="text-primary font-medium">1.500 parceros</span> que ya están cobrando.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Radar Animation */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-12 md:mt-16"
-        >
-          <RadarAnimation />
-        </motion.div>
+        {/* Radar Animation - lazy loaded */}
+        <div className="mt-12 md:mt-16">
+          <Suspense fallback={<div className="w-full max-w-[340px] aspect-square mx-auto" />}>
+            <RadarAnimation />
+          </Suspense>
+        </div>
       </div>
     </section>
   );
