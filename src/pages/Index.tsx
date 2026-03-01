@@ -45,7 +45,7 @@ const Index = () => {
 
         {/* CTA */}
         <CTAButton variant="primary">
-          QUERO COMEÇAR AGORA 📲
+          Experimentar FutVision 📲
         </CTAButton>
       </div>
     </div>
