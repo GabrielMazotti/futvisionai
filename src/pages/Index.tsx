@@ -12,37 +12,37 @@ const Index = () => {
 
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-hidden"
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 py-6 sm:py-8 overflow-hidden"
       style={{
         backgroundImage: "url('/images/hero-bg.png')",
         backgroundSize: "cover",
-        backgroundPosition: "center top",
+        backgroundPosition: "center bottom",
       }}
     >
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/55" />
 
-      <div className="relative z-10 w-full max-w-3xl mx-auto text-center flex flex-col items-center gap-6 md:gap-8">
+      <div className="relative z-10 w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto text-center flex flex-col items-center gap-4 sm:gap-5 md:gap-8">
         {/* Headline */}
-        <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
+        <h1 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold leading-snug text-white px-2">
           Mais de 20.000 pessoas já ganharam entre{" "}
           <span className="gradient-text">100 $ e 300 $</span> por dia nos
           últimos 5 meses.
         </h1>
 
         {/* Sub-copy */}
-        <p className="text-base md:text-lg lg:text-xl text-white/80 max-w-2xl leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-white/80 max-w-sm sm:max-w-md md:max-w-2xl leading-relaxed px-2">
           Utilizando apenas o <span className="text-primary font-semibold">FutVision</span> para
           detetar falhas em sites de apostas e entrar antes de todos os outros.
         </p>
 
-        <p className="text-sm md:text-base text-white/70">
+        <p className="text-xs sm:text-sm md:text-base text-white/70">
           Assista ao vídeo a seguir e descubra como pode ser o próximo.
         </p>
 
-        {/* VSL Video Embed */}
-        <div className="w-full max-w-[400px] rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-black/60">
-          <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
+        {/* VSL Video Embed - mobile-first sizing */}
+        <div className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-black/60">
+          <div style={{ position: "relative", paddingTop: "177.78%" }}>
             <iframe
               frameBorder="0"
               allowFullScreen
