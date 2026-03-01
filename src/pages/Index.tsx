@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import { CTAButton } from "@/components/CTAButton";
 
 const Index = () => {
+  useEffect(() => {
+    const s = document.createElement("script");
+    s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+    s.async = true;
+    document.head.appendChild(s);
+    return () => { s.remove(); };
+  }, []);
+
   return (
     <div
       className="relative min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-hidden"
@@ -32,15 +41,16 @@ const Index = () => {
         </p>
 
         {/* VSL Video Embed */}
-        <div className="w-full aspect-video rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-black/60">
-          {/* Replace the src below with your actual VSL embed URL */}
-          <iframe
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-            title="FutVision VSL"
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+        <div className="w-full max-w-[400px] rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-black/60">
+          <div style={{ position: "relative", paddingTop: "177.77777777777777%" }}>
+            <iframe
+              frameBorder="0"
+              allowFullScreen
+              src={`https://scripts.converteai.net/5e853756-3835-489a-b398-e289a9f79c12/players/69a4959210258bc4a102862e/v4/embed.html?vl=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+              referrerPolicy="origin"
+            />
+          </div>
         </div>
 
         {/* CTA */}
