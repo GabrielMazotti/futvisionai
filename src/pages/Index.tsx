@@ -139,7 +139,9 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div
+            className={`mt-8 transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+          >
             <CTAButton>ENTRAR AGORA 📲</CTAButton>
           </div>
         </div>
