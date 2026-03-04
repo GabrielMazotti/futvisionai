@@ -23,7 +23,7 @@ const Index = () => {
     <div className={`min-h-[100dvh] flex flex-col bg-background ${!showCTA ? "h-[100dvh] overflow-hidden" : ""}`}>
       {/* ── HERO ── */}
       <section
-        className="relative flex flex-col items-center justify-center px-4 py-10 sm:py-14 overflow-hidden"
+        className={`relative flex flex-col items-center justify-center px-4 py-10 sm:py-14 overflow-hidden ${!showCTA ? "min-h-[100dvh]" : ""}`}
         style={{
           backgroundImage: "url('/images/hero-bg.png')",
           backgroundSize: "cover",
