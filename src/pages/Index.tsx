@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { CTAButton } from "@/components/CTAButton";
 
-const CTA_DELAY_MS = 4 * 60 * 1000 + 43 * 1000; // 4:43
+const CTA_DELAY_MS = 0; // TEMP: sem delay para teste (original: 4 * 60 * 1000 + 43 * 1000)
 
 const Index = () => {
   const [showCTA, setShowCTA] = useState(false);
