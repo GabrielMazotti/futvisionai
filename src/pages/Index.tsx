@@ -65,7 +65,7 @@ const Index = () => {
       </section>
 
       {/* ── COMO FUNCIONA ── */}
-      <section className="px-4 py-12 sm:py-16">
+      <section className={`px-4 py-12 sm:py-16 transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
         <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
           <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 gradient-text">
             COMO FUNCIONA?
