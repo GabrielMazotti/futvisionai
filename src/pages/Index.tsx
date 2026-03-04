@@ -20,10 +20,10 @@ const Index = () => {
   }, []);
 
   return (
-    <div className={`min-h-[100dvh] flex flex-col bg-background ${!showCTA ? "h-[100dvh] overflow-hidden" : ""}`}>
+    <div className="min-h-[100dvh] flex flex-col bg-background">
       {/* ── HERO ── */}
       <section
-        className={`relative flex flex-col items-center justify-center px-4 py-10 sm:py-14 overflow-hidden ${!showCTA ? "min-h-[100dvh]" : ""}`}
+        className="relative flex flex-col items-center justify-center px-4 py-10 sm:py-14 overflow-hidden"
         style={{
           backgroundImage: "url('/images/hero-bg.png')",
           backgroundSize: "cover",
@@ -65,7 +65,7 @@ const Index = () => {
       </section>
 
       {/* ── COMO FUNCIONA ── */}
-      <section className={`px-4 py-12 sm:py-16 transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+      <section className="px-4 py-12 sm:py-16">
         <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
           <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 gradient-text">
             COMO FUNCIONA?
@@ -108,7 +108,7 @@ const Index = () => {
       </section>
 
       {/* ── O QUE RECEBES ── */}
-      <section className={`px-4 py-12 sm:py-16 transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+      <section className="px-4 py-12 sm:py-16">
         <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
           <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 gradient-text">
             O QUE RECEBES HOJE:
