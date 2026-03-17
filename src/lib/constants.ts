@@ -1,5 +1,5 @@
 // Telegram invite URL - easy to change in one place
-export const TELEGRAM_INVITE_URL = "https://chat.whatsapp.com/DsVoHSPtSEL1RjM4eVkFMu";
+export const TELEGRAM_INVITE_URL = "https://wa.me/5531973637770?text=Quero%20acesso%20ao%20FutVision";
 
 // Social proof images
 export const PROOF_IMAGES = [
