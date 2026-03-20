@@ -11,6 +11,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/telegram" element={<Suspense fallback={null}><Telegram /></Suspense>} />
+      <Route path="/verificacao" element={<Suspense fallback={null}><Verificacao /></Suspense>} />
       <Route path="*" element={<Suspense fallback={null}><NotFound /></Suspense>} />
     </Routes>
   </BrowserRouter>
