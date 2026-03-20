@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 
 const Telegram = lazy(() => import("./pages/Telegram"));
+const Verificacao = lazy(() => import("./pages/Verificacao"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
