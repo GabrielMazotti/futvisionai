@@ -1,150 +1,175 @@
-import { useEffect, useState } from "react";
-import { CTAButton } from "@/components/CTAButton";
-
-const CTA_DELAY_MS = 4 * 60 * 1000 + 43 * 1000; // 4:43
+import { Instagram } from "lucide-react";
 
 const Index = () => {
-  const [showCTA, setShowCTA] = useState(false);
-
-  useEffect(() => {
-    const s = document.createElement("script");
-    s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
-    s.async = true;
-    document.head.appendChild(s);
-    return () => { s.remove(); };
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowCTA(true), CTA_DELAY_MS);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background">
-      {/* ── HERO ── */}
-      <section
-        className="relative flex flex-col items-center justify-center px-4 py-10 sm:py-14 overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/hero-bg.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center bottom",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60" />
+    <div className="min-h-screen bg-white text-gray-900 font-sans">
+      {/* Hero / Header Section */}
+      <section className="bg-white py-12 text-center">
+        <div className="mx-auto max-w-3xl px-6">
+          {/* Logo Icon */}
+          <div className="mx-auto mb-6 flex h-28 w-28 items-center justify-center rounded-xl bg-gradient-to-br from-amber-300 via-yellow-400 to-amber-500 shadow-lg">
+            <div className="relative h-20 w-20">
+              <div className="absolute inset-0 rounded-lg border-2 border-amber-700/40" />
+              <div className="absolute left-1/2 top-0 h-full w-0.5 -translate-x-1/2 bg-amber-700/30" />
+              <div className="absolute left-0 top-1/2 h-0.5 w-full -translate-y-1/2 bg-amber-700/30" />
+              <div className="absolute left-1/4 top-1/4 h-1/2 w-1/2 rounded border border-amber-700/30" />
+              <div className="absolute left-[15%] top-[15%] h-[70%] w-[70%] rotate-45 rounded border border-amber-700/20" />
+            </div>
+          </div>
 
-        <div className="relative z-10 w-full max-w-md sm:max-w-lg md:max-w-2xl mx-auto text-center flex flex-col items-center gap-4">
-          <h1 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold leading-snug text-white px-2">
-            11 567 pessoas já ganham entre{" "}
-            <span className="gradient-text">100 € e 300 €</span> por dia com o FutVision.
+          <h1 className="mb-4 text-2xl font-bold text-gray-900 md:text-3xl">
+            APP LANA COMERCIO DE PRODUTOS ALIMENTICIOS LTDA
           </h1>
+          <p className="text-xl font-bold text-gray-900">48.417.954/0001-20</p>
+        </div>
+      </section>
 
-          <p className="text-sm sm:text-base text-white/80 px-2">
-            Veja o vídeo e saiba como.
+      {/* Nossa Missão */}
+      <section className="bg-white py-10">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="mb-6 text-center text-2xl font-extrabold text-gray-900">
+            NOSSA MISSÃO:
+          </h2>
+          <p className="mb-4 text-left font-bold text-gray-900">
+            Missão da App Lana Comércio de Produtos Alimentícios LTDA (Milky Moo):
           </p>
+          <p className="text-left italic text-gray-900 leading-relaxed">
+            "Proporcionar momentos de felicidade e sabor através de produtos alimentícios de alta
+            qualidade, oferecendo uma experiência única aos nossos clientes. Buscamos inovar no
+            segmento de alimentação, com atendimento personalizado, ingredientes selecionados e um
+            compromisso constante com a excelência. Nossa missão é transformar cada visita em uma
+            experiência memorável, unindo qualidade, criatividade e paixão pela gastronomia."
+          </p>
+        </div>
+      </section>
 
-          {/* VSL */}
-          <div className="w-full max-w-[300px] sm:max-w-[340px] md:max-w-[380px] rounded-xl overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-black/60">
-            <div style={{ position: "relative", paddingTop: "177.78%" }}>
-              <iframe
-                frameBorder="0"
-                allowFullScreen
-                src={`https://scripts.converteai.net/5e853756-3835-489a-b398-e289a9f79c12/players/69a4959210258bc4a102862e/v4/embed.html?vl=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-                referrerPolicy="origin"
-              />
-            </div>
+      {/* Contato Banner */}
+      <section className="py-8" style={{ backgroundColor: "hsl(205, 100%, 15%)" }}>
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 md:flex-row">
+          <div className="text-center md:text-left">
+            <p className="text-lg font-bold text-white">CONTATO:</p>
+            <p className="font-bold text-white">Telefone: (61) 9282-9084</p>
+            <p className="mt-2 font-bold text-white">
+              E-mail: alexandrelana565@gmail.com
+            </p>
           </div>
-
-          {/* CTA after 4:43 */}
-          <div
-            className={`w-full transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
-          >
-            <CTAButton>QUERO O MEU ACESSO 📲</CTAButton>
+          <div className="flex flex-col items-center gap-2">
+            <Instagram className="h-10 w-10 text-white" />
+            <span className="font-bold text-white">INSTAGRAM.</span>
           </div>
         </div>
       </section>
 
-      {/* ── COMO FUNCIONA ── */}
-      <section className="px-4 py-12 sm:py-16">
-        <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
-          <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 gradient-text">
-            COMO FUNCIONA?
+      {/* Quem Somos */}
+      <section className="bg-white py-12">
+        <div className="mx-auto max-w-3xl px-6">
+          <h2 className="mb-8 text-center text-2xl font-extrabold text-gray-900">
+            QUEM SOMOS?
           </h2>
 
-          <div className="flex flex-col gap-6">
-            {[
-              {
-                num: "1",
-                title: "O Robô Deteta",
-                desc: "Varre 40 ligas e encontra falhas matemáticas.",
-              },
-              {
-                num: "2",
-                title: "Tu Recebes",
-                desc: "Alerta direto no telemóvel com o sinal pronto.",
-              },
-              {
-                num: "3",
-                title: "Tu Ganhas",
-                desc: "Copia, cola e levanta o lucro. Sem análises.",
-              },
-            ].map((step) => (
-              <div key={step.num} className="glass-card p-5 flex items-start gap-4">
-                <span className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center font-heading font-bold text-primary text-base">
-                  {step.num}
-                </span>
-                <div>
-                  <h3 className="font-heading font-semibold text-foreground text-sm sm:text-base">
-                    {step.title}
-                  </h3>
-                  <p className="text-muted-foreground text-xs sm:text-sm mt-1 leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="rounded-xl bg-gray-50 p-8 shadow-sm">
+            <h3 className="mb-6 text-center text-lg font-bold text-gray-900">
+              Sobre a App Lana Comércio de Produtos Alimentícios LTDA (Milky Moo)
+            </h3>
+
+            <p className="mb-6 text-center font-bold text-gray-900 leading-relaxed">
+              A App Lana Comércio de Produtos Alimentícios LTDA, registrada sob o CNPJ
+              48.417.954/0001-20 e conhecida pelo nome fantasia Milky Moo, é uma empresa que atua
+              no segmento de lanchonetes, casas de chá, de sucos e similares, localizada em Belo
+              Horizonte, MG. Com foco em qualidade e inovação, oferecemos produtos alimentícios que
+              encantam e proporcionam experiências únicas aos nossos clientes.
+            </p>
+
+            <p className="mb-6 text-center font-bold text-gray-900 leading-relaxed">
+              Nossa atividade principal é o comércio de produtos alimentícios no formato de
+              lanchonete, além do comércio varejista de suvenires, bijuterias e artesanatos. Nos
+              destacamos pela qualidade dos nossos produtos, atendimento diferenciado e ambiente
+              acolhedor, sempre buscando superar as expectativas dos nossos clientes.
+            </p>
+
+            <p className="mb-6 text-center font-bold text-gray-900 leading-relaxed">
+              Localizada na Av Cristiano Machado, 11833, Loja Sebo3082 Nivel Piso L 3, Vila
+              Cloris, Belo Horizonte-MG (CEP 31.744-007), nossa empresa é referência em alimentação
+              de qualidade, proporcionando uma experiência profissional e confiável. Valorizamos a
+              transparência, a criatividade e a satisfação do cliente, garantindo que cada visita
+              seja especial.
+            </p>
+
+            <p className="text-center font-bold text-gray-900 leading-relaxed">
+              Na Milky Moo, acreditamos que a alimentação é uma forma poderosa de conectar pessoas e
+              criar memórias. Por isso, nosso compromisso vai além do produto: queremos ajudar
+              nossos clientes a viverem momentos inesquecíveis com sabor e qualidade.
+            </p>
+
+            <hr className="my-8 border-gray-200" />
+
+            {/* Produtos e Serviços */}
+            <h3 className="mb-6 text-center text-lg font-extrabold text-gray-900">
+              Produtos e Serviços Disponíveis:
+            </h3>
+            <div className="space-y-2 text-center font-bold text-gray-900">
+              <p>✔ Lanchonete – Produtos alimentícios de alta qualidade e sabor único.</p>
+              <p>✔ Milkshakes e Bebidas – Variedade de sabores e combinações exclusivas.</p>
+              <p>✔ Comércio Varejista – Suvenires, bijuterias e artesanatos.</p>
+              <p>✔ Atendimento Personalizado – Experiência diferenciada para cada cliente.</p>
+            </div>
+
+            <hr className="my-8 border-gray-200" />
+
+            {/* Informações da Empresa */}
+            <h3 className="mb-6 text-center text-lg font-extrabold text-gray-900">
+              Informações da Empresa:
+            </h3>
+            <ul className="space-y-1 text-center font-bold text-gray-900">
+              <li>• Razão Social: APP LANA COMERCIO DE PRODUTOS ALIMENTICIOS LTDA</li>
+              <li>• Nome Fantasia: MILKY MOO</li>
+              <li>• CNPJ: 48.417.954/0001-20</li>
+              <li>
+                • Endereço: Av Cristiano Machado, 11833, Loja Sebo3082 Nivel Piso L 3, Vila
+                Cloris, Belo Horizonte-MG
+              </li>
+              <li>• CEP: 31.744-007</li>
+              <li>• Telefone: (61) 9282-9084</li>
+              <li>• E-mail: alexandrelana565@gmail.com</li>
+            </ul>
+
+            <hr className="my-8 border-gray-200" />
+
+            {/* Localização */}
+            <h3 className="mb-4 text-center text-lg font-extrabold text-gray-900">
+              Localização e Contato:
+            </h3>
+            <p className="text-center font-bold text-gray-900">
+              📍 Endereço: Av Cristiano Machado, 11833, Loja Sebo3082 Nivel Piso L 3, Vila Cloris,
+              Belo Horizonte-MG, CEP 31.744-007
+            </p>
+            <p className="mb-6 text-center font-bold text-gray-900">
+              📞 Telefone/WhatsApp: (61) 9282-9084
+            </p>
+
+            <hr className="my-8 border-gray-200" />
+
+            <p className="text-center font-bold text-gray-900 leading-relaxed">
+              Na App Lana Comércio de Produtos Alimentícios LTDA (Milky Moo), estamos prontos para
+              proporcionar momentos incríveis através dos nossos produtos. Entre em contato e
+              descubra o sabor que encanta! 🍦🥤
+            </p>
           </div>
         </div>
       </section>
 
-      {/* ── O QUE RECEBES ── */}
-      <section className="px-4 py-12 sm:py-16">
-        <div className="max-w-md sm:max-w-lg md:max-w-2xl mx-auto">
-          <h2 className="font-heading text-lg sm:text-xl md:text-2xl font-bold text-center mb-8 gradient-text">
-            O QUE RECEBES HOJE:
-          </h2>
-
-          <div className="glass-card p-6 sm:p-8 space-y-5">
-            {[
-              { icon: "✅", text: "App FUTVISIÓN: Robô de falhas", tag: "GRÁTIS" },
-              { icon: "✅", text: "Guia de Alavancagem: Banca a subir rápido", tag: "GRÁTIS" },
-              { icon: "✅", text: "Comunidade VIP no Whatsapp: Lucra com os melhores", tag: "GRÁTIS" },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="text-lg flex-shrink-0">{item.icon}</span>
-                <p className="text-foreground text-sm sm:text-base leading-relaxed">
-                  {item.text} →{" "}
-                  <span className="font-bold text-primary">{item.tag}</span>
-                </p>
-              </div>
-            ))}
-
-            <div className="pt-4 border-t border-border/40">
-              <p className="text-center text-sm sm:text-base font-semibold" style={{ color: "hsl(45, 100%, 55%)" }}>
-                ⚠️ ACESSO TOTAL GRÁTIS POR 30 DIAS.
-              </p>
-              <p className="text-center text-xs sm:text-sm text-muted-foreground mt-1">
-                Sem cartões. Sem letras pequenas.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className={`mt-8 transition-all duration-700 ${showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
-          >
-            <CTAButton>ENTRAR AGORA 📲</CTAButton>
-          </div>
-        </div>
+      {/* CTA Final */}
+      <section className="bg-white py-10 text-center">
+        <h2 className="mb-4 text-xl font-bold text-gray-900">Fale comigo:</h2>
+        <a
+          href="https://wa.me/5561992829084"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block rounded-lg px-10 py-3 text-lg font-bold text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "hsl(205, 100%, 15%)" }}
+        >
+          CONVERSAR AGORA
+        </a>
       </section>
     </div>
   );
